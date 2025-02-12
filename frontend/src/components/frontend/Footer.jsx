@@ -1,6 +1,8 @@
 import React from "react";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer>
       <div className="container py-5">
@@ -51,6 +53,10 @@ const Footer = () => {
               <li>Lucknow, Uttar Pradesh, 226017</li>
               <li>0522400XXXX</li>
             </ul>
+          </div>
+          <hr />
+          <div className="text-center pt-4">
+            Copyright &copy; {year} All Rights Reserved.
           </div>
         </div>
       </div>

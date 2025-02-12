@@ -1,17 +1,17 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-import NavComponent from "react-bootstrap/Navbar";
+import Navbar from "react-bootstrap/Navbar";
 
-const Navbar = () => {
+const Header = () => {
   return (
     <header>
       <div className="container py-3">
-        <NavComponent expand="lg">
-          <NavComponent.Brand href="/" className="logo">
+        <Navbar expand="lg">
+          <Navbar.Brand href="/" className="logo">
             <span>UrbanEdge</span> Constructions
-          </NavComponent.Brand>
-          <NavComponent.Toggle aria-controls="basic-NavComponent-nav" />
-          <NavComponent.Collapse id="basic-navbar-nav">
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="/" className="nav-link">
                 Home
@@ -32,11 +32,11 @@ const Navbar = () => {
                 Contact Us
               </Nav.Link>
             </Nav>
-          </NavComponent.Collapse>
-        </NavComponent>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     </header>
   );
 };
 
-export default Navbar;
+export default Header;
