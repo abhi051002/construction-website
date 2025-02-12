@@ -84,3 +84,17 @@ header {
     border: 1px solid $primary-color;
   }
 }
+
+.section-2 {
+  img {
+    border-radius: 40px;
+  }
+  span {
+    color: $primary-color;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+    display: block;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
