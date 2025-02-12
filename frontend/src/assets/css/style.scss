@@ -3,6 +3,7 @@ $primary-color: #fe538d;
 $secondary-color: #ffb703;
 $text-color: #000;
 $text-white: #fff;
+$dark-background: #222725;
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
@@ -21,6 +22,14 @@ h3 {
 
 p {
   font-size: 1.2em;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+  li {
+    list-style: none;
+  }
 }
 
 header {
@@ -43,6 +52,25 @@ header {
         color: $primary-color;
       }
     }
+  }
+}
+
+footer {
+  background-color: $dark-background;
+  color: $text-white;
+  h3 {
+    font-size: 1.5em;
+    color: $secondary-color;
+  }
+  ul {
+    li {
+      padding: 5px 0;
+    }
+  }
+  a {
+    color: $text-white;
+    font-size: 1.2em;
+    text-decoration: none;
   }
 }
 
