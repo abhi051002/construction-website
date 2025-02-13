@@ -4,6 +4,7 @@ $secondary-color: #ffb703;
 $text-color: #000;
 $text-white: #fff;
 $dark-background: #222725;
+$light-background: #9e9b9b;
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
@@ -17,7 +18,7 @@ h2 {
   font-size: 3em;
 }
 h3 {
-  font-size: 2em;
+  font-size: 1.5 em;
 }
 
 p {
@@ -29,6 +30,21 @@ ul {
   padding-left: 0;
   li {
     list-style: none;
+  }
+}
+
+.bg-light {
+  background-color: $light-background;
+}
+
+.section-header {
+  span {
+    color: $primary-color;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+    display: block;
+    font-weight: 500;
   }
 }
 
@@ -124,5 +140,68 @@ footer {
     display: block;
     font-weight: 500;
     text-transform: uppercase;
+  }
+}
+
+.section-3 {
+  .item {
+    position: relative;
+    overflow: hidden;
+    color: $text-white;
+    margin-bottom: 20px;
+    &:hover {
+      .service-body {
+        transform: translateY(0%);
+        .service-content {
+          opacity: 1;
+        }
+      }
+    }
+    .service-image {
+      position: relative;
+      overflow: hidden;
+      img {
+        width: 100%;
+        border-radius: 40px;
+        aspect-ratio: 1/1.2;
+        object-fit: cover;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 40px;
+        background: linear-gradient(
+          180deg,
+          rgba(217, 217, 217, 0) 0%,
+          rgba(217, 217, 217, 0) 13.02%,
+          rgba(0, 0, 0, 0.51) 42.5%,
+          rgba(0, 0, 0, 0.63) 70%,
+          #000000 100%
+        );
+      }
+    }
+    .service-body {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      transform: translateY(80%);
+      transition: all 0.4s ease-in-out;
+      .service-content {
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.section-4 {
+  .card {
+    border-radius: 40px;
+    margin-bottom: 20px;
   }
 }
