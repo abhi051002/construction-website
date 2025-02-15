@@ -31,7 +31,7 @@ const OurProjects = () => {
                     general construction
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>
@@ -54,7 +54,7 @@ const OurProjects = () => {
                     general construction
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>
@@ -77,7 +77,7 @@ const OurProjects = () => {
                     general construction
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>
@@ -100,7 +100,7 @@ const OurProjects = () => {
                     general construction
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>

@@ -6,6 +6,8 @@ import Header from "./Header";
 import OurServices from "./OurServices";
 import OurProjects from "./OurProjects";
 import WhyChooseUs from "./WhyChooseUs";
+import Testimonals from "./Testimonals";
+import BlogNews from "./BlogNews";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <OurServices />
       <WhyChooseUs />
       <OurProjects />
+      <Testimonals />
+      <BlogNews />
     </>
   );
 };

@@ -19,8 +19,8 @@ const Hero = () => {
                 to quality.
               </p>
               <div className="mt-4">
-                <a className="btn btn-primary">Contact Now</a>
-                <a className="btn btn-secondary ms-2">View Projects</a>
+                <a className="btn btn-primary large-btn">Contact Now</a>
+                <a className="btn btn-secondary large-btn ms-2">View Projects</a>
               </div>
             </div>
           </div>

@@ -30,7 +30,29 @@ const OurServices = () => {
                     maintenance of infrastructure that supports modern society.
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3 col-lg-3">
+            <div className="item">
+              <div className="service-image">
+                <img src={ServiceImg} alt="" className="w-100" />
+              </div>
+              <div className="service-body">
+                <div className="service-title">
+                  <h3>Civil Construction</h3>
+                </div>
+                <div className="service-content">
+                  <p>
+                    Civil construction is a core sector within the construction
+                    industry that focuses on the design, development, and
+                    maintenance of infrastructure that supports modern society.
+                  </p>
+                </div>
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>
@@ -74,29 +96,7 @@ const OurServices = () => {
                     maintenance of infrastructure that supports modern society.
                   </p>
                 </div>
-                <a href="#" className="btn btn-primary">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-3 col-lg-3">
-            <div className="item">
-              <div className="service-image">
-                <img src={ServiceImg} alt="" className="w-100" />
-              </div>
-              <div className="service-body">
-                <div className="service-title">
-                  <h3>Civil Construction</h3>
-                </div>
-                <div className="service-content">
-                  <p>
-                    Civil construction is a core sector within the construction
-                    industry that focuses on the design, development, and
-                    maintenance of infrastructure that supports modern society.
-                  </p>
-                </div>
-                <a href="#" className="btn btn-primary">
+                <a href="#" className="btn btn-primary small-btn">
                   Read More
                 </a>
               </div>
