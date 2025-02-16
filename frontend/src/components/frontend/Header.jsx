@@ -19,16 +19,16 @@ const Header = () => {
               <Nav.Link href="/about" className="nav-link">
                 About Us
               </Nav.Link>
-              <Nav.Link href="#link" className="nav-link">
+              <Nav.Link href="/services" className="nav-link">
                 Services
               </Nav.Link>
-              <Nav.Link href="#link" className="nav-link">
+              <Nav.Link href="/projects" className="nav-link">
                 Projects
               </Nav.Link>
-              <Nav.Link href="#link" className="nav-link">
+              <Nav.Link href="/blogs" className="nav-link">
                 Blogs
               </Nav.Link>
-              <Nav.Link href="#link" className="nav-link">
+              <Nav.Link href="/contact-us" className="nav-link">
                 Contact Us
               </Nav.Link>
             </Nav>

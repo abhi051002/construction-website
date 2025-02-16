@@ -19,9 +19,25 @@ const Testimonals = () => {
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     spaceBetween={50}
-                    slidesPerView={3}
                     autoplay={true}
-                    pagination={{ clickable: true }}>
+                    pagination={{ clickable: true }}
+                    breakpoints={{
+                        // when window width is >= 320px
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 20
+                        },
+                        // when window width is >= 768px
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 30
+                        },
+                        // when window width is >= 1024px
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 50
+                        }
+                    }}>
                     <SwiperSlide>
                         <div className="card shadow border-0">
                             <div className='card-body p-5'>
@@ -69,7 +85,6 @@ const Testimonals = () => {
                             <div className='card-body p-5'>
                                 <div className="rating">
                                     <FiveStar />
-
                                 </div>
                                 <div className='content pt-4 pb-2'>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fugiat necessitatibus placeat incidunt? Impedit provident est ducimus amet ipsam accusantium, asperiores nesciunt saepe iure nisi.</p>
@@ -91,7 +106,6 @@ const Testimonals = () => {
                             <div className='card-body p-5'>
                                 <div className="rating">
                                     <FiveStar />
-
                                 </div>
                                 <div className='content pt-4 pb-2'>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fugiat necessitatibus placeat incidunt? Impedit provident est ducimus amet ipsam accusantium, asperiores nesciunt saepe iure nisi.</p>
@@ -113,7 +127,6 @@ const Testimonals = () => {
                             <div className='card-body p-5'>
                                 <div className="rating">
                                     <FiveStar />
-
                                 </div>
                                 <div className='content pt-4 pb-2'>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fugiat necessitatibus placeat incidunt? Impedit provident est ducimus amet ipsam accusantium, asperiores nesciunt saepe iure nisi.</p>
@@ -130,7 +143,6 @@ const Testimonals = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
                 </Swiper>
             </div>
         </section>
