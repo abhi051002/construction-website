@@ -364,3 +364,23 @@ footer {
     border-radius: 40px;
   }
 }
+
+.login-form {
+  width: 100%;
+  max-width: 450px;
+
+  .card {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.dashboard {
+  .card {
+    min-height: 400px;
+  }
+}
