@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./context/Auth";
 
 const Login = () => {
   const {
@@ -13,6 +14,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
     try {
@@ -22,51 +24,69 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          email: data.email.trim(),
+          password: data.password,
+        }),
       });
 
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
       const result = await res.json();
-      if (result.success) {
-        navigate("/admin/dashboard");
+
+      if (result && result.success) {
         const userInfo = {
           id: result.id,
           token: result.token,
         };
         localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+        login(userInfo);
+
+        toast.success("Login successful!");
+
+        // Now navigate
+        navigate("/admin/dashboard");
       } else {
-        toast.error(result.error);
+        toast.error(
+          result?.error || "Login failed. Please check your credentials."
+        );
       }
-      console.log(result);
     } catch (error) {
-      toast.error(error.message);
-      console.error(error);
+      console.error("Login error:", error);
+      toast.error(error?.message || "An error occurred during login");
     } finally {
       setLoading(false);
     }
   };
+
   return (
-    <main>
+    <main className="login-page">
       <div className="container my-5 d-flex justify-content-center">
         <div className="login-form my-5 w-100" style={{ maxWidth: "450px" }}>
           <div className="card border-0 shadow">
             <div className="card-body py-4 px-4">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="d-flex justify-content-center">
-                  <h4 className="mb-4">Login Here</h4>
+              <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <div className="text-center mb-4">
+                  <h4>Login Here</h4>
                 </div>
+
+                {/* Email Field */}
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
                   </label>
-                  <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0">
+                  <div className="input-group has-validation">
+                    <span className="input-group-text bg-light">
                       <Mail size={18} />
                     </span>
                     <input
                       id="email"
-                      type="text"
-                      placeholder="Email"
-                      className={`form-control border-start-0 ${
+                      type="email"
+                      placeholder="Enter your email"
+                      className={`form-control ${
                         errors.email ? "is-invalid" : ""
                       }`}
                       {...register("email", {
@@ -84,32 +104,35 @@ const Login = () => {
                     )}
                   </div>
                 </div>
+
+                {/* Password Field */}
                 <div className="mb-4">
                   <label htmlFor="password" className="form-label">
                     Password
                   </label>
-                  <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0">
+                  <div className="input-group has-validation">
+                    <span className="input-group-text bg-light">
                       <Lock size={18} />
                     </span>
                     <input
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      className={`form-control border-start-0 border-end-0 ${
+                      placeholder="Enter your password"
+                      className={`form-control ${
                         errors.password ? "is-invalid" : ""
                       }`}
                       {...register("password", {
                         required: "Password is required",
                       })}
                     />
-                    <span
-                      className="input-group-text bg-light border-start-0 cursor-pointer"
+                    <button
+                      type="button"
+                      className="input-group-text bg-light"
                       onClick={() => setShowPassword(!showPassword)}
-                      style={{ cursor: "pointer" }}
+                      tabIndex="-1"
                     >
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </span>
+                    </button>
                     {errors.password && (
                       <div className="invalid-feedback">
                         {errors.password.message}
@@ -117,8 +140,25 @@ const Login = () => {
                     )}
                   </div>
                 </div>
-                <button className="btn btn-primary w-100 py-2">
-                  {loading ? "Processing..." : "Login"}
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="btn btn-primary w-100 py-2 mt-2"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm me-2"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Processing...
+                    </>
+                  ) : (
+                    "Login"
+                  )}
                 </button>
               </form>
             </div>
