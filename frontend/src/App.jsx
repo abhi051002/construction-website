@@ -14,6 +14,7 @@ import Login from "./components/backend/Login";
 import NotFound from "./components/frontend/NotFound";
 import { ToastContainer } from "react-toastify";
 import Dashboard from "./components/backend/Dashboard";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,7 +33,14 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
 
           <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
