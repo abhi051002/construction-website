@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar";
 import {
   PieChart,
@@ -10,7 +10,36 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
-  // Sample data for dashboard stats
+  const [services, setServices] = useState(0);
+  const userInfo = localStorage.getItem("userInfo");
+  const fetchServices = async () => {
+    try {
+      const userInfo = localStorage.getItem("userInfo");
+      const token = userInfo ? JSON.parse(userInfo).token : null;
+      if (token) {
+        const response = await fetch("http://localhost:8000/api/services", {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        setServices(data.data.length);
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchServices();
+  }, [userInfo]);
   const stats = [
     {
       title: "Total Visitors",
@@ -35,7 +64,7 @@ const Dashboard = () => {
     },
     {
       title: "Active Services",
-      value: "42",
+      value: services,
       change: "+5.1%",
       icon: <Activity size={24} />,
       color: "warning",
