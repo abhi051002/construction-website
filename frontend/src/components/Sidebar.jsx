@@ -48,7 +48,7 @@ const Sidebar = ({ activePage = "dashboard" }) => {
   ];
 
   return (
-    <div className="sidebar card border-0 shadow-sm sticky-top">
+    <div className="sidebar card h-auto border-0 shadow-sm">
       <div className="card-body p-0">
         {/* Brand Header */}
         <div className="brand-header p-4 border-bottom">
