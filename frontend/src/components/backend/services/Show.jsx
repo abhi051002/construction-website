@@ -77,6 +77,7 @@ const Show = () => {
                       services={displayedServices}
                       windowWidth={windowWidth}
                       searchTerm={searchTerm}
+                      onDelete={handleRefresh}
                     />
 
                     {/* Pagination Section */}
