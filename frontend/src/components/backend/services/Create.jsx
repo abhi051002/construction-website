@@ -9,6 +9,8 @@ import JoditEditor from "jodit-react";
 
 const Create = ({ placeholder }) => {
   const editor = useRef(null);
+  const [isDisable, setIsDisable] = useState(false);
+  const [imageId, setImageId] = useState(null);
   const [content, setContent] = useState("");
   const config = useMemo(
     () => ({
@@ -28,7 +30,7 @@ const Create = ({ placeholder }) => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const newData = { ...data, content: content };
+      const newData = { ...data, content: content, imageId: imageId };
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/services`,
         {
@@ -57,7 +59,27 @@ const Create = ({ placeholder }) => {
       setLoading(false);
     }
   };
-
+  const handleFile = async (e) => {
+    const formData = new FormData();
+    const file = e.target.files[0];
+    formData.append("image", file);
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/temp-images`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.status == false) {
+          toast.error(result.error.image[0]);
+        } else {
+          setImageId(result.data.id);
+        }
+      });
+  };
   return (
     <main className="dashboard-container bg-light min-vh-100 py-4">
       <div className="container">
@@ -153,7 +175,17 @@ const Create = ({ placeholder }) => {
                       <option value="0">Block</option>
                     </select>
                   </div>
-                  <button className="btn btn-primary w-100">
+                  <div className="mb-3">
+                    <label htmlFor="" className="form-label">
+                      Image
+                    </label>
+                    <br />
+                    <input type="file" onChange={handleFile} />
+                  </div>
+                  <button
+                    className="btn btn-primary w-100"
+                    disabled={isDisable}
+                  >
                     {loading ? "Creating..." : "Create"}
                   </button>
                 </form>
