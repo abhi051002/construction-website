@@ -8,22 +8,24 @@ import {
   Package,
   FileText,
 } from "lucide-react";
+import useGetToken from "../../hooks/useGetToken";
 
 const Dashboard = () => {
   const [services, setServices] = useState(0);
-  const userInfo = localStorage.getItem("userInfo");
+  const { token } = useGetToken();
   const fetchServices = async () => {
     try {
-      const userInfo = localStorage.getItem("userInfo");
-      const token = userInfo ? JSON.parse(userInfo).token : null;
       if (token) {
-        const response = await fetch("http://localhost:8000/api/services", {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/services`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -39,7 +41,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchServices();
-  }, [userInfo]);
+  }, [token]);
   const stats = [
     {
       title: "Total Visitors",
