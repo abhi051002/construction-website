@@ -74,7 +74,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="dashboard-container bg-light min-vh-100 py-4">
+    <main className="dashboard-container bg-light py-4">
       <div className="container">
         <div className="row g-4">
           <div className="col-lg-3">
