@@ -17,13 +17,13 @@ const Sidebar = ({ activePage = "dashboard" }) => {
     {
       icon: <Home size={18} />,
       title: "Dashboard",
-      link: "#",
+      link: "/admin/dashboard",
       id: "dashboard",
     },
     {
       icon: <Briefcase size={18} />,
       title: "Services",
-      link: "#",
+      link: "/admin/services",
       id: "services",
     },
     {
