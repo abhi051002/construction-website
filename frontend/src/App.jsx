@@ -15,6 +15,8 @@ import NotFound from "./components/frontend/NotFound";
 import { ToastContainer } from "react-toastify";
 import Dashboard from "./components/backend/Dashboard";
 import RequireAuth from "./components/RequireAuth";
+import { default as ShowServices } from "./components/backend/services/Show";
+import { default as CreateServices } from "./components/backend/services/Create";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,7 +43,8 @@ function App() {
               </RequireAuth>
             }
           />
-
+          <Route path="/admin/services" element={<ShowServices />} />
+          <Route path="/admin/services/create" element={<CreateServices />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
