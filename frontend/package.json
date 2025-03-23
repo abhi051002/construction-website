@@ -12,6 +12,8 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "dotenv": "^16.4.7",
+    "jodit-react": "^5.2.15",
     "lucide-react": "^0.483.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
