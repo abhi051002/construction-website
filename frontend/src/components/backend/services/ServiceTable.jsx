@@ -1,7 +1,7 @@
 import React from "react";
 import ServiceTableRow from "./ServiceTableRow";
 
-const ServiceTable = ({ services, windowWidth, searchTerm }) => {
+const ServiceTable = ({ services, windowWidth, searchTerm, onDelete }) => {
   // Get responsive column configuration
   const getColumns = () => {
     if (windowWidth < 576) {
@@ -48,6 +48,7 @@ const ServiceTable = ({ services, windowWidth, searchTerm }) => {
                 service={service}
                 columns={columns}
                 windowWidth={windowWidth}
+                onDelete={onDelete}
               />
             ))
           ) : (
