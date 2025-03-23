@@ -401,41 +401,6 @@ footer {
   }
 }
 
-// Sidebar Styles
-.sidebar {
-  border-radius: 10px;
-  overflow: hidden;
-  position: sticky;
-  top: 20px;
-
-  .brand-header {
-    background-color: rgba(13, 110, 253, 0.03);
-  }
-
-  ul.nav {
-    .nav-link {
-      transition: all 0.2s;
-      border-radius: 8px;
-      margin-bottom: 5px;
-
-      &:hover:not(.active) {
-        background-color: rgba(13, 110, 253, 0.05);
-      }
-
-      &.active {
-        font-weight: 500;
-      }
-    }
-  }
-
-  // Fix for sticky positioning
-  position: sticky;
-  top: 1rem;
-  height: calc(100vh - 2rem);
-  display: flex;
-  flex-direction: column;
-}
-
 // Statistics Cards
 .stat-card {
   border-radius: 10px;
