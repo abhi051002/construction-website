@@ -29,7 +29,7 @@ const Sidebar = ({ activePage = "dashboard" }) => {
     {
       icon: <FolderOpen size={18} />,
       title: "Projects",
-      link: "#",
+      link: "/admin/projects",
       id: "projects",
     },
     {
