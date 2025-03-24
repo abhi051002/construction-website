@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProjectsImg from "../../assets/images/construction2.jpg";
 
 const OurProjects = () => {
+  const [projects, setProjects] = useState([]);
+  const fetchLatestProjects = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/get-latest-projects?limit=4`
+      );
+      const result = await response.json();
+      setProjects(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchLatestProjects();
+  }, []);
   return (
     <section className="section-3 bg-light py-5">
       <div className="container-fluid py-5">
@@ -14,98 +30,35 @@ const OurProjects = () => {
           </p>
         </div>
         <div className="row pt-4">
-          <div className="col-md-3 col-lg-3">
-            <div className="item">
-              <div className="service-image">
-                <img src={ProjectsImg} alt="" className="w-100" />
-              </div>
-              <div className="service-body">
-                <div className="service-title">
-                  <h3>Odisha Projects</h3>
+          {projects &&
+            projects.map((project) => {
+              return (
+                <div className="col-md-3 col-lg-3" key={project.id}>
+                  <div className="item">
+                    <div className="service-image">
+                      <img
+                        src={`${
+                          import.meta.env.VITE_FILE_URL
+                        }/uploads/projects/small/${project.image}`}
+                        alt=""
+                        className="w-100"
+                      />
+                    </div>
+                    <div className="service-body">
+                      <div className="service-title">
+                        <h3>{project.title}</h3>
+                      </div>
+                      <div className="service-content">
+                        <p>{project.short_desc}</p>
+                      </div>
+                      <a href="#" className="btn btn-primary small-btn">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="service-content">
-                  <p>
-                    Specialty construction is a niche sector within the
-                    construction industry that focuses on projects requiring
-                    specialized skills, materials, and techniques. Unlike
-                    general construction
-                  </p>
-                </div>
-                <a href="#" className="btn btn-primary small-btn">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-3 col-lg-3">
-            <div className="item">
-              <div className="service-image">
-                <img src={ProjectsImg} alt="" className="w-100" />
-              </div>
-              <div className="service-body">
-                <div className="service-title">
-                  <h3>Odisha Projects</h3>
-                </div>
-                <div className="service-content">
-                  <p>
-                    Specialty construction is a niche sector within the
-                    construction industry that focuses on projects requiring
-                    specialized skills, materials, and techniques. Unlike
-                    general construction
-                  </p>
-                </div>
-                <a href="#" className="btn btn-primary small-btn">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-3 col-lg-3">
-            <div className="item">
-              <div className="service-image">
-                <img src={ProjectsImg} alt="" className="w-100" />
-              </div>
-              <div className="service-body">
-                <div className="service-title">
-                  <h3>Odisha Projects</h3>
-                </div>
-                <div className="service-content">
-                  <p>
-                    Specialty construction is a niche sector within the
-                    construction industry that focuses on projects requiring
-                    specialized skills, materials, and techniques. Unlike
-                    general construction
-                  </p>
-                </div>
-                <a href="#" className="btn btn-primary small-btn">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-3 col-lg-3">
-            <div className="item">
-              <div className="service-image">
-                <img src={ProjectsImg} alt="" className="w-100" />
-              </div>
-              <div className="service-body">
-                <div className="service-title">
-                  <h3>Odisha Projects</h3>
-                </div>
-                <div className="service-content">
-                  <p>
-                    Specialty construction is a niche sector within the
-                    construction industry that focuses on projects requiring
-                    specialized skills, materials, and techniques. Unlike
-                    general construction
-                  </p>
-                </div>
-                <a href="#" className="btn btn-primary small-btn">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
+              );
+            })}
         </div>
       </div>
     </section>
