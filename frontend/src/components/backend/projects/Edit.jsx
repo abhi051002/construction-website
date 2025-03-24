@@ -189,65 +189,100 @@ const Edit = ({ placeholder }) => {
                       {...register("short_desc")}
                     ></textarea>
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="" className="form-label">
-                      Construction Type
-                    </label>
-                    <input
-                      type="text"
-                      className={`form-control ${
-                        errors.construction_type ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter Construction Type"
-                      {...register("construction_type", {
-                        required: "This Construction Type field is required",
-                      })}
-                    />
-                    {errors.construction_type && (
-                      <p className="invalid-feedback">
-                        {errors?.construction_type?.message}
-                      </p>
-                    )}
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="" className="form-label">
+                          Location
+                        </label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            errors.location ? "is-invalid" : ""
+                          }`}
+                          placeholder="Enter Location"
+                          {...register("location", {
+                            required: "This location field is required",
+                          })}
+                        />
+                        {errors.location && (
+                          <p className="invalid-feedback">
+                            {errors?.location?.message}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="" className="form-label">
+                          Construction Type
+                        </label>
+                        <select
+                          className={`form-control ${
+                            errors.construction_type ? "is-invalid" : ""
+                          }`}
+                          {...register("construction_type", {
+                            required:
+                              "This Construction Type field is required",
+                          })}
+                        >
+                          <option value="">Construction Type</option>
+                          <option value="Residential Construction">
+                            Residential Construction
+                          </option>
+                          <option value="Commercial Construction">
+                            Commercial Construction
+                          </option>
+                          <option value="Industrial Construction">
+                            Industrial Construction
+                          </option>
+                          <option value="Infrastructure Construction">
+                            Infrastructure Construction
+                          </option>
+                        </select>
+                        {errors.construction_type && (
+                          <p className="invalid-feedback">
+                            {errors?.construction_type?.message}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="" className="form-label">
-                      Location
-                    </label>
-                    <input
-                      type="text"
-                      className={`form-control ${
-                        errors.location ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter Location"
-                      {...register("location", {
-                        required: "This location field is required",
-                      })}
-                    />
-                    {errors.location && (
-                      <p className="invalid-feedback">
-                        {errors?.location?.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="" className="form-label">
-                      Sector
-                    </label>
-                    <input
-                      type="text"
-                      className={`form-control ${
-                        errors.sector ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter Sector"
-                      {...register("sector", {
-                        required: "This sector field is required",
-                      })}
-                    />
-                    {errors.sector && (
-                      <p className="invalid-feedback">
-                        {errors?.sector?.message}
-                      </p>
-                    )}
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="" className="form-label">
+                          Sector
+                        </label>
+                        <select
+                          className={`form-control ${
+                            errors.sector ? "is-invalid" : ""
+                          }`}
+                          {...register("sector", {
+                            required: "This sector field is required",
+                          })}
+                        >
+                          <option value="">Sector</option>
+                          <option value="Health">Health</option>
+                          <option value="Education">Education</option>
+                          <option value="Corporate">Corporate</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="" className="form-label">
+                          Status
+                        </label>
+                        <select
+                          className="form-control"
+                          {...register("status")}
+                        >
+                          <option value="1">Active</option>
+                          <option value="0">Block</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                   <div className="mb-3">
                     <label htmlFor="" className="form-label">
@@ -261,15 +296,6 @@ const Edit = ({ placeholder }) => {
                       onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                       onChange={(newContent) => {}}
                     />
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="" className="form-label">
-                      Status
-                    </label>
-                    <select className="form-control" {...register("status")}>
-                      <option value="1">Active</option>
-                      <option value="0">Block</option>
-                    </select>
                   </div>
                   <div className="mb-3">
                     <label htmlFor="" className="form-label">
