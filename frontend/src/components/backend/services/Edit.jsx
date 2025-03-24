@@ -85,25 +85,33 @@ const Edit = ({ placeholder }) => {
     }
   };
   const handleFile = async (e) => {
-    const formData = new FormData();
-    const file = e.target.files[0];
-    formData.append("image", file);
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/temp-images`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.status == false) {
-          toast.error(result.error.image[0]);
-        } else {
-          setImageId(result.data.id);
-        }
-      });
+    try {
+      setIsDisable(true);
+      const formData = new FormData();
+      const file = e.target.files[0];
+      formData.append("image", file);
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/temp-images`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.status == false) {
+            toast.error(result.error.image[0]);
+          } else {
+            setImageId(result.data.id);
+          }
+        });
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong while uploading the image.");
+    } finally {
+      setIsDisable(false);
+    }
   };
   return (
     <main className="dashboard-container bg-light min-vh-100 py-4">
