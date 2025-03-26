@@ -35,7 +35,7 @@ const Sidebar = ({ activePage = "dashboard" }) => {
     {
       icon: <FileText size={18} />,
       title: "Articles",
-      link: "#",
+      link: "/admin/articles",
       id: "articles",
     },
     { icon: <Users size={18} />, title: "Clients", link: "#", id: "clients" },
