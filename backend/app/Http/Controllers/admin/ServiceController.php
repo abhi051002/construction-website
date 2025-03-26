@@ -114,7 +114,7 @@ class ServiceController extends Controller
         $service->slug = Str::slug($request->slug);
         $service->short_desc = $request?->short_desc ?? $service->short_desc;
         $service->content = $request?->content ?? $service->content;
-        $service->status = $request->status ? $request->status : 1;
+        $service->status = $request->status == 0 ? $request->status : 1;
         $service->save();
 
         if ($request->imageId > 0) {
