@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\front\ArticleController as FrontArticleController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
 use Illuminate\Http\Request;
@@ -19,6 +21,8 @@ Route::get('get-services', [FrontServiceController::class, 'index']);
 Route::get('get-latest-services', [FrontServiceController::class, 'latestServices']);
 Route::get('get-projects', [FrontProjectController::class, 'index']);
 Route::get('get-latest-projects', [FrontProjectController::class, 'latestProjects']);
+Route::get('get-articles', [FrontArticleController::class, 'index']);
+Route::get('get-latest-articles', [FrontArticleController::class, 'latestArticles']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/dashboard', [DashboardController::class, "index"]);
@@ -40,4 +44,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('projects/{id}', [ProjectController::class, 'update']);
     Route::get('projects/{id}', [ProjectController::class, 'show']);
     Route::delete('projects/{id}', [ProjectController::class, 'destroy']);
+
+    // Article Routes  
+    Route::post('articles', [ArticleController::class, 'store']);
+    Route::get('articles', [ArticleController::class, 'index']);
+    Route::put('articles/{id}', [ArticleController::class, 'update']);
+    Route::get('articles/{id}', [ArticleController::class, 'show']);
+    Route::delete('articles/{id}', [ArticleController::class, 'destroy']);
 });
