@@ -58,8 +58,8 @@ const ProjectTable = ({ projects, windowWidth, searchTerm, onDelete }) => {
                 className="text-center fw-bold text-danger py-4"
               >
                 {searchTerm
-                  ? "No matching services found"
-                  : "No Service Available"}
+                  ? "No matching projects found"
+                  : "No Projects Available"}
               </td>
             </tr>
           )}
