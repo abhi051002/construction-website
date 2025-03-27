@@ -38,13 +38,13 @@ const Sidebar = ({ activePage = "dashboard" }) => {
       link: "/admin/articles",
       id: "articles",
     },
-    { icon: <Users size={18} />, title: "Clients", link: "#", id: "clients" },
     {
       icon: <Settings size={18} />,
-      title: "Settings",
-      link: "#",
-      id: "settings",
+      title: "Testimonials",
+      link: "/admin/testimonials",
+      id: "testimonials",
     },
+    { icon: <Users size={18} />, title: "Clients", link: "#", id: "clients" },
   ];
 
   return (
