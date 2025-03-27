@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/frontend/Home";
 import About from "./components/frontend/About";
 import "./assets/css/style.scss";
@@ -24,6 +24,9 @@ import { default as EditProjects } from "./components/backend/projects/Edit";
 import { default as ShowArticles } from "./components/backend/articles/Show";
 import { default as CreateArticles } from "./components/backend/articles/Create";
 import { default as EditArticles } from "./components/backend/articles/Edit";
+import { default as ShowTestimonials } from "./components/backend/testimonials/Show";
+import { default as CreateTestimonials } from "./components/backend/testimonials/Create";
+import { default as EditTestimonials } from "./components/backend/testimonials/Edit";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,6 +44,10 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact-us" element={<ContactUs />} />
 
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/dashboard" replace />}
+          />
           <Route path="/admin/login" element={<Login />} />
           <Route
             path="/admin/dashboard"
@@ -60,6 +67,16 @@ function App() {
           <Route path="/admin/articles" element={<ShowArticles />} />
           <Route path="/admin/articles/create" element={<CreateArticles />} />
           <Route path="/admin/articles/edit/:id" element={<EditArticles />} />
+
+          <Route path="/admin/testimonials" element={<ShowTestimonials />} />
+          <Route
+            path="/admin/testimonials/create"
+            element={<CreateTestimonials />}
+          />
+          <Route
+            path="/admin/testimonials/edit/:id"
+            element={<EditTestimonials />}
+          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
