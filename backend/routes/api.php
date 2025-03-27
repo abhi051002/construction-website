@@ -5,10 +5,13 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\TempImageController;
+use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\front\ArticleController as FrontArticleController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
+use App\Http\Controllers\front\TestimonialController as FrontTestimonialController;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +22,15 @@ Route::get('/user', function (Request $request) {
 Route::post('/authenticate', [AuthenticationController::class, 'authenticate']);
 Route::get('get-services', [FrontServiceController::class, 'index']);
 Route::get('get-latest-services', [FrontServiceController::class, 'latestServices']);
+
 Route::get('get-projects', [FrontProjectController::class, 'index']);
 Route::get('get-latest-projects', [FrontProjectController::class, 'latestProjects']);
+
 Route::get('get-articles', [FrontArticleController::class, 'index']);
 Route::get('get-latest-articles', [FrontArticleController::class, 'latestArticles']);
+
+Route::get('get-testimonials', [FrontTestimonialController::class, 'index']);
+Route::get('get-latest-testimonials', [FrontTestimonialController::class, 'latestTestimonials']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/dashboard', [DashboardController::class, "index"]);
@@ -51,4 +59,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('articles/{id}', [ArticleController::class, 'update']);
     Route::get('articles/{id}', [ArticleController::class, 'show']);
     Route::delete('articles/{id}', [ArticleController::class, 'destroy']);
+
+    // Testimonial Routes  
+    Route::post('testimonials', [TestimonialController::class, 'store']);
+    Route::get('testimonials', [TestimonialController::class, 'index']);
+    Route::put('testimonials/{id}', [TestimonialController::class, 'update']);
+    Route::get('testimonials/{id}', [TestimonialController::class, 'show']);
+    Route::delete('testimonials/{id}', [TestimonialController::class, 'destroy']);
 });
