@@ -85,7 +85,7 @@ const useGetTestimonialsData = (token) => {
     if (term.trim() !== "") {
       results = allTestimonials.filter(
         (testimonial) =>
-          testimonial.name.toLowerCase().includes(term.toLowerCase()) ||
+          testimonial.testimonial.toLowerCase().includes(term.toLowerCase()) ||
           testimonial.citation.toLowerCase().includes(term.toLowerCase()) ||
           String(testimonial.id).includes(term)
       );
