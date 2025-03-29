@@ -51,7 +51,10 @@ const OurServices = () => {
                       <div className="service-content">
                         <p>{service.short_desc}</p>
                       </div>
-                      <a href="#" className="btn btn-primary small-btn">
+                      <a
+                        href={`/services/${service.id}`}
+                        className="btn btn-primary small-btn"
+                      >
                         Read More
                       </a>
                     </div>
