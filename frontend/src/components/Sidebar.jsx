@@ -5,9 +5,9 @@ import {
   Briefcase,
   FolderOpen,
   FileText,
-  Settings,
   LogOut,
   Users,
+  MessageCircleCode,
 } from "lucide-react";
 
 const Sidebar = ({ activePage = "dashboard" }) => {
@@ -39,7 +39,7 @@ const Sidebar = ({ activePage = "dashboard" }) => {
       id: "articles",
     },
     {
-      icon: <Settings size={18} />,
+      icon: <MessageCircleCode size={18} />,
       title: "Testimonials",
       link: "/admin/testimonials",
       id: "testimonials",
