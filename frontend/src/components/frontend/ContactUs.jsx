@@ -1,6 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import useGetToken from "../../hooks/useGetToken";
+import { toast } from "react-toastify";
 
 const ContactUs = () => {
+  const { token } = useGetToken();
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/contact-now`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const responseData = await response.json();
+      if (responseData.status) {
+        toast.success(responseData.message);
+        reset();
+      } else {
+        toast.error(responseData.error.slug[0]);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <main>
       <section className="section-7">
@@ -61,7 +104,7 @@ const ContactUs = () => {
             <div className="col-md-9">
               <div className="card shadow border-0">
                 <div className="card-body p-5">
-                  <form action="">
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
                       <div className="col-md-6 mb-4">
                         <label htmlFor="" className="form-label">
@@ -69,9 +112,19 @@ const ContactUs = () => {
                         </label>
                         <input
                           type="text"
-                          className="form-control form-control-lg"
                           placeholder="Enter Name"
+                          className={`form-control form-control-lg ${
+                            errors.name ? "is-invalid" : ""
+                          }`}
+                          {...register("name", {
+                            required: "This name field is required",
+                          })}
                         />
+                        {errors.name && (
+                          <p className="invalid-feedback">
+                            {errors?.name?.message}
+                          </p>
+                        )}
                       </div>
                       <div className="col-md-6 mb-4">
                         <label htmlFor="" className="form-label">
@@ -79,9 +132,23 @@ const ContactUs = () => {
                         </label>
                         <input
                           type="email"
-                          className="form-control form-control-lg"
+                          className={`form-control form-control-lg ${
+                            errors.email ? "is-invalid" : ""
+                          }`}
+                          {...register("email", {
+                            required: "Email is required",
+                            pattern: {
+                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                              message: "Please enter a valid email address",
+                            },
+                          })}
                           placeholder="Enter Email"
                         />
+                        {errors.name && (
+                          <p className="invalid-feedback">
+                            {errors?.name?.message}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className="row">
@@ -93,6 +160,7 @@ const ContactUs = () => {
                           type="tel"
                           className="form-control form-control-lg"
                           placeholder="Phone Number"
+                          {...register("phone")}
                         />
                       </div>
                       <div className="col-md-6 mb-4">
@@ -103,6 +171,7 @@ const ContactUs = () => {
                           type="text"
                           className="form-control form-control-lg"
                           placeholder="Subject"
+                          {...register("subject")}
                         />
                       </div>
                     </div>
@@ -116,10 +185,14 @@ const ContactUs = () => {
                         rows={5}
                         placeholder="Message"
                         className="form-control form-control-lg"
+                        {...register("message")}
                       ></textarea>
                     </div>
-                    <button className="btn btn-primary large-btn mt-3">
-                      Submit
+                    <button
+                      className="btn btn-primary large-btn mt-3"
+                      disabled={loading}
+                    >
+                      {loading ? "Submitting..." : "Submit"}
                     </button>
                   </form>
                 </div>
