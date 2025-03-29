@@ -27,6 +27,9 @@ import { default as EditArticles } from "./components/backend/articles/Edit";
 import { default as ShowTestimonials } from "./components/backend/testimonials/Show";
 import { default as CreateTestimonials } from "./components/backend/testimonials/Create";
 import { default as EditTestimonials } from "./components/backend/testimonials/Edit";
+import { default as ShowMembers } from "./components/backend/members/Show";
+import { default as CreateMembers } from "./components/backend/members/Create";
+import { default as EditMembers } from "./components/backend/members/Edit";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -77,6 +80,10 @@ function App() {
             path="/admin/testimonials/edit/:id"
             element={<EditTestimonials />}
           />
+
+          <Route path="/admin/members" element={<ShowMembers />} />
+          <Route path="/admin/members/create" element={<CreateMembers />} />
+          <Route path="/admin/members/edit/:id" element={<EditMembers />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
