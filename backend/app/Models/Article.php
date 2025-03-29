@@ -16,4 +16,10 @@ class Article extends Model
         'image',
         'status'
     ];
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime:d M, Y'
+        ];
+    }
 }
