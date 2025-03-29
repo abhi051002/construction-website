@@ -6,6 +6,9 @@ import { useLocation } from "react-router-dom";
 const Header = () => {
   const path = useLocation();
   const getNavClass = (currentPath) => {
+    if (path.pathname.includes(currentPath) && currentPath !== "/") {
+      return "active";
+    }
     return currentPath === path.pathname ? "active" : "";
   };
   return (
