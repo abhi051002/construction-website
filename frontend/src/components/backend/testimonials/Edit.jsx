@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "../../Sidebar";
-import { ArrowLeftCircle, Briefcase, FolderOpen } from "lucide-react";
+import { ArrowLeftCircle, MessageCircleCode } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import useGetToken from "../../../hooks/useGetToken";
@@ -115,7 +115,7 @@ const Edit = () => {
               <div className="card-body p-4">
                 <div className="d-flex justify-content-between">
                   <h4 className="h-5 d-flex">
-                    <FolderOpen size={28} className="me-2" />
+                    <MessageCircleCode size={28} className="me-2" />
                     {`Testimonials > Edit`}
                   </h4>
                   <Link
