@@ -1,12 +1,15 @@
 import React from "react";
-import { FolderOpen, PlusCircleIcon, RefreshCw } from "lucide-react";
+import { MessageCircleCode, PlusCircleIcon, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const TestimonialHeader = ({ windowWidth, onRefresh }) => {
   return (
     <div className="d-flex flex-wrap justify-content-between mb-3">
       <h4 className="h5 d-flex align-items-center mb-3 mb-sm-0">
-        <FolderOpen size={windowWidth < 576 ? 20 : 28} className="me-2" />
+        <MessageCircleCode
+          size={windowWidth < 576 ? 20 : 28}
+          className="me-2"
+        />
         Testimonials
       </h4>
       <div className="d-flex flex-wrap">
