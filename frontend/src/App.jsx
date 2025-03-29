@@ -30,6 +30,9 @@ import { default as EditTestimonials } from "./components/backend/testimonials/E
 import { default as ShowMembers } from "./components/backend/members/Show";
 import { default as CreateMembers } from "./components/backend/members/Create";
 import { default as EditMembers } from "./components/backend/members/Edit";
+import ServiceDetails from "./components/frontend/ServiceDetails";
+import ProjectDetails from "./components/frontend/ProjectDetails";
+import ArticleDetails from "./components/frontend/ArticleDetails";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,6 +49,9 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/services/:id" element={<ServiceDetails />} />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/blogs/:id" element={<ArticleDetails />} />
 
           <Route
             path="/admin"
@@ -63,7 +69,6 @@ function App() {
           <Route path="/admin/services" element={<ShowServices />} />
           <Route path="/admin/services/create" element={<CreateServices />} />
           <Route path="/admin/services/edit/:id" element={<EditService />} />
-
           <Route path="/admin/projects" element={<ShowProjects />} />
           <Route path="/admin/projects/create" element={<CreateProjects />} />
           <Route path="/admin/projects/edit/:id" element={<EditProjects />} />
