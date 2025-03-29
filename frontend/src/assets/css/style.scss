@@ -440,3 +440,41 @@ footer {
 .shadow-sm {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
 }
+
+.section-11 {
+  .hero {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+      url("../images/hero.jpg");
+    min-height: 500px;
+    color: $text-white;
+
+    span {
+      color: $secondary-color;
+      font-weight: 500;
+      font-size: 1.5em;
+    }
+  }
+  .sidebar {
+    border-radius: 20px;
+  }
+}
+.section-12 {
+  .hero {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+      url("../images/hero.jpg");
+    min-height: 500px;
+    color: $text-white;
+
+    span {
+      color: $secondary-color;
+      font-weight: 500;
+      font-size: 1.5em;
+    }
+  }
+  .sidebar {
+    border-radius: 20px;
+    .title {
+      font-size: 1.2em;
+    }
+  }
+}
