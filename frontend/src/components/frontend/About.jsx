@@ -11,7 +11,6 @@ const About = () => {
         `${import.meta.env.VITE_BACKEND_URL}/get-latest-members?limit=4`
       );
       const result = await response.json();
-      console.log(result);
       setMembers(result);
     } catch (error) {
       console.error(error);
