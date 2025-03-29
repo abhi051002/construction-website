@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProjectsImg from "../../assets/images/construction2.jpg";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -66,9 +67,12 @@ const Projects = () => {
                         <div className="service-content">
                           <p>{project.short_desc}</p>
                         </div>
-                        <a href="#" className="btn btn-primary small-btn">
+                        <Link
+                          to={`/projects/${project.id}`}
+                          className="btn btn-primary small-btn"
+                        >
                           Read More
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
