@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
 import Sidebar from "../../Sidebar";
-import { ArrowLeftCircle, Briefcase, FolderOpen } from "lucide-react";
+import { ArrowLeftCircle, MessageCircleCode } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useGetToken from "../../../hooks/useGetToken";
@@ -83,7 +83,7 @@ const Create = () => {
               <div className="card-body p-4">
                 <div className="d-flex justify-content-between">
                   <h4 className="h-5 d-flex">
-                    <FolderOpen size={28} className="me-2" />
+                    <MessageCircleCode size={28} className="me-2" />
                     {`Testimonials > Create`}
                   </h4>
                   <Link
