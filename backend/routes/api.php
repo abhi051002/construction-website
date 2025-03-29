@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\front\ArticleController as FrontArticleController;
+use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\MemberController as FrontMemberController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
@@ -22,14 +23,19 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/authenticate', [AuthenticationController::class, 'authenticate']);
+Route::post('/contact-now', [ContactController::class, 'index']);
+
 Route::get('get-services', [FrontServiceController::class, 'index']);
 Route::get('get-latest-services', [FrontServiceController::class, 'latestServices']);
+Route::get('get-service/{id}', [ServiceController::class, 'show']);
 
 Route::get('get-projects', [FrontProjectController::class, 'index']);
 Route::get('get-latest-projects', [FrontProjectController::class, 'latestProjects']);
+Route::get('get-project/{id}', [ProjectController::class, 'show']);
 
 Route::get('get-articles', [FrontArticleController::class, 'index']);
 Route::get('get-latest-articles', [FrontArticleController::class, 'latestArticles']);
+Route::get('get-article/{id}', [ArticleController::class, 'show']);
 
 Route::get('get-testimonials', [FrontTestimonialController::class, 'index']);
 Route::get('get-latest-testimonials', [FrontTestimonialController::class, 'latestTestimonials']);
