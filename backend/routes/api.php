@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\MemberController;
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\front\ArticleController as FrontArticleController;
+use App\Http\Controllers\front\MemberController as FrontMemberController;
 use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ServiceController as FrontServiceController;
 use App\Http\Controllers\front\TestimonialController as FrontTestimonialController;
@@ -31,6 +33,9 @@ Route::get('get-latest-articles', [FrontArticleController::class, 'latestArticle
 
 Route::get('get-testimonials', [FrontTestimonialController::class, 'index']);
 Route::get('get-latest-testimonials', [FrontTestimonialController::class, 'latestTestimonials']);
+
+Route::get('get-members', [FrontMemberController::class, 'index']);
+Route::get('get-latest-members', [FrontMemberController::class, 'latestMembers']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/dashboard', [DashboardController::class, "index"]);
@@ -66,4 +71,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('testimonials/{id}', [TestimonialController::class, 'update']);
     Route::get('testimonials/{id}', [TestimonialController::class, 'show']);
     Route::delete('testimonials/{id}', [TestimonialController::class, 'destroy']);
+
+    // Testimonial Routes  
+    Route::post('members', [MemberController::class, 'store']);
+    Route::get('members', [MemberController::class, 'index']);
+    Route::put('members/{id}', [MemberController::class, 'update']);
+    Route::get('members/{id}', [MemberController::class, 'show']);
+    Route::delete('members/{id}', [MemberController::class, 'destroy']);
 });
