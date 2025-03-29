@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BlogImg from "../../assets/images/construction3.jpg";
-
+import { Link } from "react-router-dom";
 const BlogNews = ({ limit = 3 }) => {
   const [articles, setArticle] = useState([]);
   const fetchLatestArticles = async () => {
@@ -51,13 +50,16 @@ const BlogNews = ({ limit = 3 }) => {
                     </div>
                     <div className="card-body p-4">
                       <div className="mb-3">
-                        <a href="#" className="title">
+                        <Link to={`/blogs/${article.id}`} className="title">
                           {article.title}
-                        </a>
+                        </Link>
                       </div>
-                      <a href="#" className="btn btn-primary small-btn">
+                      <Link
+                        to={`/blogs/${article.id}`}
+                        className="btn btn-primary small-btn"
+                      >
                         Read More
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
