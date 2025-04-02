@@ -19,7 +19,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8000/api/authenticate", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/authenticate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
